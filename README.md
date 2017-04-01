@@ -4,7 +4,7 @@
 
 > 英文状态的双引号，表示注释
 
-```vimscript
+```vimrc
 " 关闭兼容模式，compatible 是布尔型型的选项，在前面加上 no 代表关闭状态
 set nocompatible
 
@@ -51,4 +51,35 @@ set ruler
 " 有助于你观察这些特殊符号的状态，精确地控制文本的编辑。
 +++++---------
 +++++---------
+
+"缩进
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
+set smartindent
+" 打开自动缩进，缩进效果回收 smartindent 的影响
+set autoindent 
+
+set cinden
+
+" 将 Tab 符号变成 空格
+set expandtab
+
+" tab 字符所代表的空格数
+set tabstop=4
+
+" softtabstop 会影响 <BS> 删除的空格数，但不是用 <SPACE> 插入的空格，而是 <TAB> 插入的空格。所以我们总是把 softtabstop 设定成和 tabstop 一样的数值，这样无论是用 <TAB> 插入缩进还是用 <BS> 删除缩进，其行为总是一样的。
+
+" 但是对于使用 <SPACE> 输入的空格，哪怕是连续输入的若干个空格，<BS> 还是会一个一个的删除。
+
+set softtabstop=4
+
+" smarttab 要和后面的 shiftwidth 配合来用，它只作用于行首位置。当 smarttab 开启时，在行首键入 <TAB> 会填充 shiftwidth 设定的数值，在其他地方则填充 tabstop 设定的数值；当 smarttab 关闭时，无论在哪里键入 <TAB>，都会填充 tabstop 设定的数值。
+
+" 所以，如果开启 smarttab，然后 shiftwidth 和 tabstop 设定不一样的数值，比如一个是 8 一个是 4，那么在行首键入 <TAB> 会产生 8 个字符的空白，而在其他地方键入 <TAB> 则产生 4 个字符的空白。这常常用来控制 Continuation Indent 的行为，有时也叫做 Indentation for Wrapped Lines 或者 Wrapped Line Indentation。
+set smarttab
+
+set shiftwidth=2
 ```
