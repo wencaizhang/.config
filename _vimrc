@@ -173,13 +173,13 @@ set scrolloff=3
 set expandtab
 
 " tab 字符所代表的空格数
-set tabstop=2
+set tabstop=4
 
 " softtabstop 会影响 <BS> 删除的空格数，但不是用 <SPACE> 插入的空格，而是 <TAB> 插入的空格。所以我们总是把 softtabstop 设定成和 tabstop 一样的数值，这样无论是用 <TAB> 插入缩进还是用 <BS> 删除缩进，其行为总是一样的。
 
 " 但是对于使用 <SPACE> 输入的空格，哪怕是连续输入的若干个空格，<BS> 还是会一个一个的删除。
 
-set softtabstop=2
+set softtabstop=4
 
 " smarttab 要和后面的 shiftwidth 配合来用，它只作用于行首位置。当 smarttab 开启时，在行首键入 <TAB> 会填充 shiftwidth 设定的数值，在其他地方则填充 tabstop 设定的数值；当 smarttab 关闭时，无论在哪里键入 <TAB>，都会填充 tabstop 设定的数值。
 
@@ -190,7 +190,7 @@ set shiftwidth=2
 
 " list 开启对于制表符（tab）、行尾空格符（trail）、行结束符（eol）等等特殊符号的回显，
 " 有助于你观察这些特殊符号的状态，精确地控制文本的编辑。
-" set list listchars=eol:?,tab:?\ ,trail:.,
+
 
 " 关闭自动备份，避免出现 ~ 文件
 set nobackup 
