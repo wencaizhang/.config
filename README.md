@@ -17,7 +17,7 @@ set go= 	    "不显示图形按钮
 set cursorline 	"高亮显示当前行
 set guifont=Consolas:h16  	"设置字体及大小
 set fileencodings=utf-8,gbk	"打开已有文件时使用的编码
-set fenc=utf-8			    "保存文件时使用的编码
+set fenc=utf-8              "保存文件时使用的编码
 set background=dark         " dark 是暗色系，light 是亮色系
 
 colorscheme desert 		"设置配色方案(vim 自带配色)
