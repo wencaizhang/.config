@@ -2,15 +2,17 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/vundle/
+" set rtp+=$HOME/.vim/bundle/vundle/
+set rtp+=C:\Vim\vimfiles\vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'powerline/powerline'	" 增强状态栏
 Plugin 'scrooloose/nerdtree'	" 目录树
+Plugin 'vim-airline/vim-airline'  " airline
 Plugin 'scrooloose/nerdcommenter'	" 快速注释代码
 Plugin 'gorodinskiy/vim-coloresque' " 高亮显示颜色代码 
 Plugin 'altercation/vim-colors-solarized' "	主题
@@ -94,13 +96,27 @@ let g:neocomplcache_enable_at_startup = 1
 map <c-/> ,cn<CR>
 let g:NERDTrimTrailingWhitespace = 1
 
+"   选择要注释的行  shift+v 
+"   注释单行或者选中行  ,cc  
+"   多行注释    ,cm  
+"   解开注释    ,cu  
+"   在注释和取消注释之间切换    ,ci  
+
 " 启动vim自动打开 NERDTree
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
 
 "打开新的buffer时自动定位到编辑窗口
 autocmd VimEnter * wincmd p
 
-
+" airline
+ set laststatus=2   "air 总是打开状态
+  let g:airline_left_sep='>'
+  let g:airline_right_sep='<'
+  let g:airline_detect_modified=1
+  let g:airline_detect_paste=1
+  let g:airline_detect_crypt=1
+  let g:airline_detect_spell=1
+  let g:airline_detect_iminsert=0
 
 " 基础设置
 " ===========
@@ -120,7 +136,6 @@ set fileencodings=utf-8,gbk	" 打开已有文件时使用的编码
 set fenc=utf-8			" 保存文件时使用的编码
 set background=dark	" dark 是暗色系，light 是亮色系
 colorscheme solarized
-
 
 " 缩进======
 set tabstop=4 
@@ -194,3 +209,25 @@ set shiftwidth=2
 
 " 关闭自动备份，避免出现 ~ 文件
 set nobackup 
+
+
+" 在浏览器预览 for win32
+function! ViewInBrowser(name)
+    let file = expand("%:p")
+    exec ":update " . file
+    let l:browsers = {
+        \"cr":"C:\Program Files (x86)/Google/Chrome/Application/Chrome.exe"
+    \}
+    let htdocs='E:\\apmxe\\htdocs\\'
+    let strpos = stridx(file, substitute(htdocs, '\\\\', '\', "g"))
+    if strpos == -1
+       exec ":silent !start ". l:browsers[a:name] ." file://" . file
+    else
+        let file=substitute(file, htdocs, "http://127.0.0.1:8090/", "g")
+        let file=substitute(file, '\\', '/', "g")
+        exec ":silent !start ". l:browsers[a:name] file
+    endif
+endfunction
+nmap <f4> :call ViewInBrowser("cr")<cr>
+
+
