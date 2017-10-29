@@ -1,59 +1,4 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-" set rtp+=$HOME/.vim/bundle/vundle/
-set rtp+=C:\Vim\vimfiles\vundle.vim
-
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'	" Ä¿Â¼Ê÷
-Plugin 'vim-airline/vim-airline'  " airline
-Plugin 'scrooloose/nerdcommenter'	" ¿ìËÙ×¢ÊÍ´úÂë
-Plugin 'gorodinskiy/vim-coloresque' " ¸ßÁÁÏÔÊ¾ÑÕÉ«´úÂë 
-Plugin 'altercation/vim-colors-solarized' "	Ö÷Ìâ
-"Plugin 'Valloric/MatchTagAlways' "Æ¥Åä±êÇ©
-Plugin 'mattn/emmet-vim'	" emmet
-"Plugin 'tpope/vim-markdown'  " ¸ßÁÁmarkdown
-"Plugin 'alvan/vim-closetag'  " tag ×Ô¶¯²¹È«
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-
+ï»¿set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -83,151 +28,135 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-"NERDTree¿ì½İ¼ü
-map <C-n> :NERDTreeToggle<CR>
-" NERDTree.vim
-let g:NERDTreeWinPos="left"
-let g:NERDTreeWinSize=25
-let g:NERDTreeShowLineNumbers=1
-let g:neocomplcache_enable_at_startup = 1
 
 
-" ×¢ÊÍ
-map <c-/> ,cn<CR>
-let g:NERDTrimTrailingWhitespace = 1
+        set encoding=utf-8
+        set langmenu=zh_CN.UTF-8
+        language message zh_CN.UTF-8
 
-"   Ñ¡ÔñÒª×¢ÊÍµÄĞĞ  shift+v 
-"   ×¢ÊÍµ¥ĞĞ»òÕßÑ¡ÖĞĞĞ  ,cc  
-"   ¶àĞĞ×¢ÊÍ    ,cm  
-"   ½â¿ª×¢ÊÍ    ,cu  
-"   ÔÚ×¢ÊÍºÍÈ¡Ïû×¢ÊÍÖ®¼äÇĞ»»    ,ci  
 
-" Æô¶¯vim×Ô¶¯´ò¿ª NERDTree
-"autocmd VimEnter * NERDTree
 
-"´ò¿ªĞÂµÄbufferÊ±×Ô¶¯¶¨Î»µ½±à¼­´°¿Ú
-autocmd VimEnter * wincmd p
 
-" airline
- set laststatus=2   "air ×ÜÊÇ´ò¿ª×´Ì¬
-  let g:airline_left_sep='>'
-  let g:airline_right_sep='<'
-  let g:airline_detect_modified=1
-  let g:airline_detect_paste=1
-  let g:airline_detect_crypt=1
-  let g:airline_detect_spell=1
-  let g:airline_detect_iminsert=0
 
-" »ù´¡ÉèÖÃ
-" ===========
-" ¹Ø±Õ¼æÈİÄ£Ê½£¬compatible ÊÇ²¼¶ûĞÍĞÍµÄÑ¡Ïî£¬ÔÚÇ°Ãæ¼ÓÉÏ no ´ú±í¹Ø±Õ×´Ì¬
+" å…³é—­å…¼å®¹æ¨¡å¼ï¼Œcompatible æ˜¯å¸ƒå°”å‹å‹çš„é€‰é¡¹ï¼Œåœ¨å‰é¢åŠ ä¸Š no ä»£è¡¨å…³é—­çŠ¶æ€
 set nocompatible
 
 let mapleader = ","
 
-filetype on 	"ÎÄ¼şÀàĞÍ¼ì²â
-syntax enable 	"´ò¿ªÓï·¨¸ßÁÁ
-set number 	"ÏÔÊ¾ĞĞºÅ
-set go= 	"²»ÏÔÊ¾Í¼ĞÎ°´Å¥
-set cursorline 	"¸ßÁÁÏÔÊ¾µ±Ç°ĞĞ
-set guifont=Consolas:h16  	"ÉèÖÃ×ÖÌå¼°´óĞ¡
-colorscheme desert 		"ÉèÖÃÅäÉ«·½°¸
-set fileencodings=utf-8,gbk	" ´ò¿ªÒÑÓĞÎÄ¼şÊ±Ê¹ÓÃµÄ±àÂë
-set fenc=utf-8			" ±£´æÎÄ¼şÊ±Ê¹ÓÃµÄ±àÂë
-set background=dark	" dark ÊÇ°µÉ«Ïµ£¬light ÊÇÁÁÉ«Ïµ
-colorscheme solarized
+filetype on     "æ–‡ä»¶ç±»å‹æ£€æµ‹
+syntax enable 	"æ‰“å¼€è¯­æ³•é«˜äº®
+set number 	    "æ˜¾ç¤ºè¡Œå·
+set go= 	    "ä¸æ˜¾ç¤ºå›¾å½¢æŒ‰é’®
+set cursorline 	"é«˜äº®æ˜¾ç¤ºå½“å‰è¡Œ
+set guifont=Consolas:h16  	"è®¾ç½®å­—ä½“åŠå¤§å°
+set fileencodings=utf-8,gbk	"æ‰“å¼€å·²æœ‰æ–‡ä»¶æ—¶ä½¿ç”¨çš„ç¼–ç 
+set fenc=utf-8              "ä¿å­˜æ–‡ä»¶æ—¶ä½¿ç”¨çš„ç¼–ç 
+set background=dark         " dark æ˜¯æš—è‰²ç³»ï¼Œlight æ˜¯äº®è‰²ç³»
 
-" Ëõ½ø======
-set tabstop=4 
-set softtabstop=4 
-set shiftwidth=4 
-set noexpandtab 
+colorscheme desert 		"è®¾ç½®é…è‰²æ–¹æ¡ˆ(vim è‡ªå¸¦é…è‰²)
 
-set smartindent
-" ´ò¿ª×Ô¶¯Ëõ½ø£¬Ëõ½øĞ§¹û»ØÊÕ smartindent µÄÓ°Ïì
-set autoindent 
+" å…³é—­è‡ªåŠ¨å¤‡ä»½ï¼Œé¿å…å‡ºç° å¸¦æœ‰~ç¬¦å·çš„æ–‡ä»¶
+set nobackup 
 
-set cindent
-" ======Ëõ½ø
-
-set backspace=indent,eol,start
-
-
-" ÔÚÊäÈë³É¶ÔµÄÀ¨ºÅÊÇ£¬vim »áÌø×ª²¢¸ßÁÁÒ»ÏÂÆ¥ÅäµÄÀ¨ºÅ£¬È»ºó»Øµ½ÕıÔÚÊäÈëµÄÎ»ÖÃ
-set showmatch
-
-" set showmatch Ìø×ª²¢¸ßÁÁµÄÊ±¼äÉèÖÃ£¬1 ±íÊ¾ 1/10 Ãë
-set matchtime=1
-
-" ±ê³ß£¬ÔÚÆÁÄ»ÏÂ·½ÏÔÊ¾ĞĞºÅºÍÁĞºÅ
-set ruler
-
-" ´ò¿ªËÑË÷¸ßÁÁÄ£Ê½£¬ÈôËÑË÷ÕÒµ½Æ¥ÅäÏî¾Í¸ßÁÁÏÔÊ¾ËùÓĞÆ¥ÅäÏî
-set hlsearch
-
-" ´ò¿ªÔöÁ¿ËÑË÷Ä£Ê½£¬Vim »á¼´Ê±Æ¥ÅäÄãµ±Ç°ÊäÈëµÄÄÚÈİ£¬ÕâÑù»á¸øÄã¸üºÃµÄËÑË÷·´À¡£¬
-" ²»¹ıÄã»¹ÊÇÒªÔÚ×îºóÊäÈë <CR>£¨»Ø³µ£©À´È·ÈÏÄãµÄËÑË÷ÄÚÈİµÄ
-set incsearch
-
-" ËÑË÷Ê±ºöÂÔ´óĞ¡Ğ´£¬¿ÉÒÔÓÃ \C ±êÊ¶ÁÙÊ±¿ªÆô´óĞ¡Ğ´Ãô¸ĞÄ£Ê½
-set ignorecase
-
-"Change work dir to current dir
-"ÔÚÖÕ¶ËÀïÊ¹ÓÃ Vim ´ò¿ªÄ³Ò»ÎÄ¼şÊ±£¬»áÄ¬ÈÏ½«µ±Ç°Ä¿Â¼×÷Îª Vim µÄ¹¤×÷Ä¿Â¼£¬
-"µ«ÊÇÔÚÊ¹ÓÃ gvim Ê±£¬Èç¹û´Ó×ÀÃæ»·¾³Ìá¹©µÄÎÄ¼ş¹ÜÀíÆ÷ÖĞÖ±½Ó´ò¿ªÄ³Ò»ÎÄ±¾ÎÄ¼ş£¬gvim µÄ¹¤×÷Ä¿Â¼Ä¬ÈÏÊÇ $HOME¡£
-"ÏÂÃæ×Ô¶¯½« Vim ¹¤×÷Ä¿Â¼Ç¨ÒÆµ½Ëù´ò¿ªÎÄ±¾ÎÄ¼şµÄÄ¿Â¼ÏÂ
-autocmd BufEnter * cd %:p:h
-
-" Æô¶¯Ê±×Ô¶¯×î´ó»¯
+" å¯åŠ¨æ—¶è‡ªåŠ¨æœ€å¤§åŒ–
 autocmd GUIEnter * simalt ~x
 
-" ÔÚÉÏÏÂÒÆ¶¯¹â±êÊ±£¬¹â±êµÄÉÏ·½ºÍÏÂ·½ÖÁÉÙ»á±£ÁôµÄĞĞÊı
-set scrolloff=3
+" æ‰“å¼€æœç´¢é«˜äº®æ¨¡å¼ï¼Œè‹¥æœç´¢æ‰¾åˆ°åŒ¹é…é¡¹å°±é«˜äº®æ˜¾ç¤ºæ‰€æœ‰åŒ¹é…é¡¹
+set hlsearch
 
-" ½« Tab ·ûºÅ±ä³É ¿Õ¸ñ
+" æœç´¢æ—¶å¿½ç•¥å¤§å°å†™ï¼Œå¯ä»¥ç”¨ \C æ ‡è¯†ä¸´æ—¶å¼€å¯å¤§å°å†™æ•æ„Ÿæ¨¡å¼
+set ignorecase
+
+" æ‰“å¼€å¢é‡æœç´¢æ¨¡å¼ï¼ŒVim ä¼šå³æ—¶åŒ¹é…ä½ å½“å‰è¾“å…¥çš„å†…å®¹ï¼Œè¿™æ ·ä¼šç»™ä½ æ›´å¥½çš„æœç´¢åé¦ˆï¼Œ
+" ä¸è¿‡ä½ è¿˜æ˜¯è¦åœ¨æœ€åè¾“å…¥ <CR>ï¼ˆå›è½¦ï¼‰æ¥ç¡®è®¤ä½ çš„æœç´¢å†…å®¹çš„
+set incsearch
+
+" åœ¨è¾“å…¥æˆå¯¹çš„æ‹¬å·æ˜¯ï¼Œvim ä¼šè·³è½¬å¹¶é«˜äº®ä¸€ä¸‹åŒ¹é…çš„æ‹¬å·ï¼Œç„¶åå›åˆ°æ­£åœ¨è¾“å…¥çš„ä½ç½®
+set showmatch
+
+" set showmatch è·³è½¬å¹¶é«˜äº®çš„æ—¶é—´è®¾ç½®ï¼Œ1 è¡¨ç¤º 1/10 ç§’
+set matchtime=1
+
+" æ ‡å°ºï¼Œåœ¨å±å¹•ä¸‹æ–¹æ˜¾ç¤ºè¡Œå·å’Œåˆ—å·
+set ruler
+
+" list å¼€å¯å¯¹äºåˆ¶è¡¨ç¬¦ï¼ˆtabï¼‰ã€è¡Œå°¾ç©ºæ ¼ç¬¦ï¼ˆtrailï¼‰ã€è¡Œç»“æŸç¬¦ï¼ˆeolï¼‰ç­‰ç­‰ç‰¹æ®Šç¬¦å·çš„å›æ˜¾ï¼Œ
+" æœ‰åŠ©äºä½ è§‚å¯Ÿè¿™äº›ç‰¹æ®Šç¬¦å·çš„çŠ¶æ€ï¼Œç²¾ç¡®åœ°æ§åˆ¶æ–‡æœ¬çš„ç¼–è¾‘ã€‚
+
+"ç¼©è¿›
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
+set smartindent
+" æ‰“å¼€è‡ªåŠ¨ç¼©è¿›ï¼Œç¼©è¿›æ•ˆæœå›æ”¶ smartindent çš„å½±å“
+set autoindent 
+
+
+" å°† Tab ç¬¦å·å˜æˆ ç©ºæ ¼
 set expandtab
 
-" tab ×Ö·ûËù´ú±íµÄ¿Õ¸ñÊı
+" tab å­—ç¬¦æ‰€ä»£è¡¨çš„ç©ºæ ¼æ•°
 set tabstop=4
 
-" softtabstop »áÓ°Ïì <BS> É¾³ıµÄ¿Õ¸ñÊı£¬µ«²»ÊÇÓÃ <SPACE> ²åÈëµÄ¿Õ¸ñ£¬¶øÊÇ <TAB> ²åÈëµÄ¿Õ¸ñ¡£ËùÒÔÎÒÃÇ×ÜÊÇ°Ñ softtabstop Éè¶¨³ÉºÍ tabstop Ò»ÑùµÄÊıÖµ£¬ÕâÑùÎŞÂÛÊÇÓÃ <TAB> ²åÈëËõ½ø»¹ÊÇÓÃ <BS> É¾³ıËõ½ø£¬ÆäĞĞÎª×ÜÊÇÒ»ÑùµÄ¡£
+" softtabstop ä¼šå½±å“ <BS> åˆ é™¤çš„ç©ºæ ¼æ•°ï¼Œä½†ä¸æ˜¯ç”¨ <SPACE> æ’å…¥çš„ç©ºæ ¼ï¼Œè€Œæ˜¯ <TAB> æ’å…¥çš„ç©ºæ ¼ã€‚æ‰€ä»¥æˆ‘ä»¬æ€»æ˜¯æŠŠ softtabstop è®¾å®šæˆå’Œ tabstop ä¸€æ ·çš„æ•°å€¼ï¼Œè¿™æ ·æ— è®ºæ˜¯ç”¨ <TAB> æ’å…¥ç¼©è¿›è¿˜æ˜¯ç”¨ <BS> åˆ é™¤ç¼©è¿›ï¼Œå…¶è¡Œä¸ºæ€»æ˜¯ä¸€æ ·çš„ã€‚
 
-" µ«ÊÇ¶ÔÓÚÊ¹ÓÃ <SPACE> ÊäÈëµÄ¿Õ¸ñ£¬ÄÄÅÂÊÇÁ¬ĞøÊäÈëµÄÈô¸É¸ö¿Õ¸ñ£¬<BS> »¹ÊÇ»áÒ»¸öÒ»¸öµÄÉ¾³ı¡£
+" ä½†æ˜¯å¯¹äºä½¿ç”¨ <SPACE> è¾“å…¥çš„ç©ºæ ¼ï¼Œå“ªæ€•æ˜¯è¿ç»­è¾“å…¥çš„è‹¥å¹²ä¸ªç©ºæ ¼ï¼Œ<BS> è¿˜æ˜¯ä¼šä¸€ä¸ªä¸€ä¸ªçš„åˆ é™¤ã€‚
 
 set softtabstop=4
 
-" smarttab ÒªºÍºóÃæµÄ shiftwidth ÅäºÏÀ´ÓÃ£¬ËüÖ»×÷ÓÃÓÚĞĞÊ×Î»ÖÃ¡£µ± smarttab ¿ªÆôÊ±£¬ÔÚĞĞÊ×¼üÈë <TAB> »áÌî³ä shiftwidth Éè¶¨µÄÊıÖµ£¬ÔÚÆäËûµØ·½ÔòÌî³ä tabstop Éè¶¨µÄÊıÖµ£»µ± smarttab ¹Ø±ÕÊ±£¬ÎŞÂÛÔÚÄÄÀï¼üÈë <TAB>£¬¶¼»áÌî³ä tabstop Éè¶¨µÄÊıÖµ¡£
+" smarttab è¦å’Œåé¢çš„ shiftwidth é…åˆæ¥ç”¨ï¼Œå®ƒåªä½œç”¨äºè¡Œé¦–ä½ç½®ã€‚å½“ smarttab å¼€å¯æ—¶ï¼Œåœ¨è¡Œé¦–é”®å…¥ <TAB> ä¼šå¡«å…… shiftwidth è®¾å®šçš„æ•°å€¼ï¼Œåœ¨å…¶ä»–åœ°æ–¹åˆ™å¡«å…… tabstop è®¾å®šçš„æ•°å€¼ï¼›å½“ smarttab å…³é—­æ—¶ï¼Œæ— è®ºåœ¨å“ªé‡Œé”®å…¥ <TAB>ï¼Œéƒ½ä¼šå¡«å…… tabstop è®¾å®šçš„æ•°å€¼ã€‚
 
-" ËùÒÔ£¬Èç¹û¿ªÆô smarttab£¬È»ºó shiftwidth ºÍ tabstop Éè¶¨²»Ò»ÑùµÄÊıÖµ£¬±ÈÈçÒ»¸öÊÇ 8 Ò»¸öÊÇ 4£¬ÄÇÃ´ÔÚĞĞÊ×¼üÈë <TAB> »á²úÉú 8 ¸ö×Ö·ûµÄ¿Õ°×£¬¶øÔÚÆäËûµØ·½¼üÈë <TAB> Ôò²úÉú 4 ¸ö×Ö·ûµÄ¿Õ°×¡£Õâ³£³£ÓÃÀ´¿ØÖÆ Continuation Indent µÄĞĞÎª£¬ÓĞÊ±Ò²½Ğ×ö Indentation for Wrapped Lines »òÕß Wrapped Line Indentation¡£
+" æ‰€ä»¥ï¼Œå¦‚æœå¼€å¯ smarttabï¼Œç„¶å shiftwidth å’Œ tabstop è®¾å®šä¸ä¸€æ ·çš„æ•°å€¼ï¼Œæ¯”å¦‚ä¸€ä¸ªæ˜¯ 8 ä¸€ä¸ªæ˜¯ 4ï¼Œé‚£ä¹ˆåœ¨è¡Œé¦–é”®å…¥ <TAB> ä¼šäº§ç”Ÿ 8 ä¸ªå­—ç¬¦çš„ç©ºç™½ï¼Œè€Œåœ¨å…¶ä»–åœ°æ–¹é”®å…¥ <TAB> åˆ™äº§ç”Ÿ 4 ä¸ªå­—ç¬¦çš„ç©ºç™½ã€‚è¿™å¸¸å¸¸ç”¨æ¥æ§åˆ¶ Continuation Indent çš„è¡Œä¸ºï¼Œæœ‰æ—¶ä¹Ÿå«åš Indentation for Wrapped Lines æˆ–è€… Wrapped Line Indentationã€‚
 set smarttab
 
 set shiftwidth=2
 
-" list ¿ªÆô¶ÔÓÚÖÆ±í·û£¨tab£©¡¢ĞĞÎ²¿Õ¸ñ·û£¨trail£©¡¢ĞĞ½áÊø·û£¨eol£©µÈµÈÌØÊâ·ûºÅµÄ»ØÏÔ£¬
-" ÓĞÖúÓÚÄã¹Û²ìÕâĞ©ÌØÊâ·ûºÅµÄ×´Ì¬£¬¾«È·µØ¿ØÖÆÎÄ±¾µÄ±à¼­¡£
 
+syntax enable
+set background=dark
+colorscheme solarized
+" ************** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ************ "  
+  
+" vundle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+set nocompatible
+filetype off  
+set rtp+=~/.vim/bundle/Vundle.vim  
+call vundle#begin()  
+Plugin 'VundleVim/Vundle.vim'  
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'altercation/vim-colors-solarized'
 
-" ¹Ø±Õ×Ô¶¯±¸·İ£¬±ÜÃâ³öÏÖ ~ ÎÄ¼ş
-set nobackup 
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
+call vundle#end()  
+filetype on  
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='simple'
 
-" ÔÚä¯ÀÀÆ÷Ô¤ÀÀ for win32
-function! ViewInBrowser(name)
-    let file = expand("%:p")
-    exec ":update " . file
-    let l:browsers = {
-        \"cr":"C:\Program Files (x86)/Google/Chrome/Application/Chrome.exe"
-    \}
-    let htdocs='E:\\apmxe\\htdocs\\'
-    let strpos = stridx(file, substitute(htdocs, '\\\\', '\', "g"))
-    if strpos == -1
-       exec ":silent !start ". l:browsers[a:name] ." file://" . file
-    else
-        let file=substitute(file, htdocs, "http://127.0.0.1:8090/", "g")
-        let file=substitute(file, '\\', '/', "g")
-        exec ":silent !start ". l:browsers[a:name] file
-    endif
-endfunction
-nmap <f4> :call ViewInBrowser("cr")<cr>
-
-
+" <leader>cc // æ³¨é‡Š
+" <leader>cm åªç”¨ä¸€ç»„ç¬¦å·æ³¨é‡Š
+" <leader>cA åœ¨è¡Œå°¾æ·»åŠ æ³¨é‡Š
+" <leader>c$ /* æ³¨é‡Š */
+" <leader>cs /* å—æ³¨é‡Š */
+" <leader>cy æ³¨é‡Šå¹¶å¤åˆ¶
+" <leader>c<space> æ³¨é‡Š/å–æ¶ˆæ³¨é‡Š
+" <leader>ca åˆ‡æ¢ã€€// å’Œ /* */
+" <leader>cu å–æ¶ˆæ³¨é‡Š
+ 
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCustomDelimiters = {
+            \ 'javascript': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
+            \ 'less': { 'left': '/**', 'right': '*/' }
+        \ }
