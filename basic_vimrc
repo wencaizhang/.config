@@ -1,1 +1,73 @@
 
+" 基本设置============================================
+
+let mapleader = "\<Space>"	" Leader 映射到空格键
+
+" 按下 tab 标签补全
+" let g:user_emmet_expandabbr_key = '<Tab>'
+" let g:user_emmet_expandabbr_key = '<F2>'
+let g:user_emmet_expandabbr_key = '<c-e>'
+
+syntax enable	" 打开语法高亮
+
+syntax on	" 文件类型检测
+
+set go=	" 不显示图形按钮
+
+set nobackup	" 取消自动备份
+
+set cursorline	" 高亮显示光标所在行
+
+set number	" 显示行号，可简写为 set nu
+
+" set nonu	"关闭行号
+
+set relativenumber	"显示相对行号，可简写为 set rnu
+
+" set nornu	"关闭相对行号
+
+set numberwidth=5	"设置行号宽度
+
+" set guifont=Source_Code_Pro:h12	" 设置字体
+set guifont=Courier_new:h12:b:cDEFAULT	" 设置字体
+set guifont=Consolas:h14	" 设置字体
+
+set shortmess=atI
+set shortmess=atI
+
+
+
+colorscheme desert	" 配色方案
+
+set background=light	" 背景色
+set background=dark
+
+
+" 打开已有文件时使用的编码
+set fileencodings=utf-8,gbk
+
+" 保存文件时使用的编码
+set fenc=utf-8
+
+
+autocmd BufWritePost $MYVIMRC source $MYVIMRC	" 让配置变更立即生效
+
+autocmd GUIEnter * simalt ~x	" 启动时自动最大化
+
+set scrolloff=3	
+" ============================================基本设置
+
+" 括号==========================================
+
+"显示匹配的括号
+set showmatch
+
+" 跳转并高亮的时间设置，1 表示 1/10 秒
+set matchtime=1
+
+" 括号自动补全，大括号会补全并换行缩进
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+" inoremap { {<CR>}<ESC>O
+" ==========================================括号
