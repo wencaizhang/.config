@@ -4,7 +4,7 @@ gvim 安装时默认会添加到右键菜单中（写入系统注册表），重
 
 如果不想重新安装 gvim，可以自己动手将其写入注册表。
 
-新建一个 reg 格式文件，如：`gvim.edit.reg'，文件内容如下：
+新建一个 reg 格式文件，如：`gvim.edit.reg`，文件内容如下：
 ```
 Windows Registry Editor Version 5.00
 
