@@ -1,10 +1,11 @@
-﻿set nocompatible
+set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
 set diffexpr=MyDiff()
-function MyDiff()
+function! MyDiff()
+"  let mapleader = ";"
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
@@ -28,135 +29,204 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+" 基本设置============================================
+
+let mapleader = "\<Space>"	" Leader 映射到空格键
+
+" 按下 tab 标签补全
+" let g:user_emmet_expandabbr_key = '<Tab>'
+" let g:user_emmet_expandabbr_key = '<F2>'
+let g:user_emmet_expandabbr_key = '<c-e>'
+
+syntax enable	" 打开语法高亮
+
+syntax on	" 文件类型检测
+
+set go=	" 不显示图形按钮
+
+set nobackup	" 取消自动备份
+
+set cursorline	" 高亮显示光标所在行
+
+set number	" 显示行号，可简写为 set nu
+
+" set nonu	"关闭行号
+
+set relativenumber	"显示相对行号，可简写为 set rnu
+
+" set nornu	"关闭相对行号
+
+set numberwidth=5	"设置行号宽度
+
+set guifont=Source_Code_Pro:h12	" 设置字体
+" set guifont=Courier_new:h12:b:cDEFAULT	" 设置字体
 
 
-        set encoding=utf-8
-        set langmenu=zh_CN.UTF-8
-        language message zh_CN.UTF-8
+
+colorscheme desert	" 配色方案
+
+set background=light	" 背景色
+set background=dark
 
 
+" 打开已有文件时使用的编码
+set fileencodings=utf-8,gbk
+
+" 保存文件时使用的编码
+set fenc=utf-8
 
 
+autocmd BufWritePost $MYVIMRC source $MYVIMRC	" 让配置变更立即生效
 
-" 关闭兼容模式，compatible 是布尔型型的选项，在前面加上 no 代表关闭状态
-set nocompatible
+autocmd GUIEnter * simalt ~x	" 启动时自动最大化
 
-let mapleader = ","
+set scrolloff=3	
+" ============================================基本设置
 
-filetype on     "文件类型检测
-syntax enable 	"打开语法高亮
-set number 	    "显示行号
-set go= 	    "不显示图形按钮
-set cursorline 	"高亮显示当前行
-set guifont=Consolas:h16  	"设置字体及大小
-set fileencodings=utf-8,gbk	"打开已有文件时使用的编码
-set fenc=utf-8              "保存文件时使用的编码
-set background=dark         " dark 是暗色系，light 是亮色系
+" 括号==========================================
 
-colorscheme desert 		"设置配色方案(vim 自带配色)
-
-" 关闭自动备份，避免出现 带有~符号的文件
-set nobackup 
-
-" 启动时自动最大化
-autocmd GUIEnter * simalt ~x
-
-" 打开搜索高亮模式，若搜索找到匹配项就高亮显示所有匹配项
-set hlsearch
-
-" 搜索时忽略大小写，可以用 \C 标识临时开启大小写敏感模式
-set ignorecase
-
-" 打开增量搜索模式，Vim 会即时匹配你当前输入的内容，这样会给你更好的搜索反馈，
-" 不过你还是要在最后输入 <CR>（回车）来确认你的搜索内容的
-set incsearch
-
-" 在输入成对的括号是，vim 会跳转并高亮一下匹配的括号，然后回到正在输入的位置
+"显示匹配的括号
 set showmatch
 
-" set showmatch 跳转并高亮的时间设置，1 表示 1/10 秒
+" 跳转并高亮的时间设置，1 表示 1/10 秒
 set matchtime=1
 
-" 标尺，在屏幕下方显示行号和列号
-set ruler
+" 括号自动补全，大括号会补全并换行缩进
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+" inoremap { {<CR>}<ESC>O
+" ==========================================括号
 
-" list 开启对于制表符（tab）、行尾空格符（trail）、行结束符（eol）等等特殊符号的回显，
-" 有助于你观察这些特殊符号的状态，精确地控制文本的编辑。
 
-"缩进
+" 注释
+map <c-/> ,cn<CR>
+let g:NERDTrimTrailingWhitespace = 1
+
+"   选择要注释的行  shift+v
+"   注释单行或者选中行  ,cc
+"   多行注释    ,cm
+"   解开注释    ,cu
+"   在注释和取消注释之间切换    ,ci
+
+" f11 上一个主题	f12 下一个主题
+map <F12> :NextColorScheme<CR>
+imap <F12> <ESC> :NextColorScheme<CR>
+map <F11> :PreviousColorScheme<CR>
+imap <F11> <ESC> :PreviousColorScheme<CR>
+" 执行 :colorscheme 可以查看当前主题
+
+" 开启新行时使用智能自动缩进
+set smartindent
+" 缩进======
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
-
 set smartindent
 " 打开自动缩进，缩进效果回收 smartindent 的影响
 set autoindent 
+set cindent
+" ======缩进
+" 自动保存
+" 设定 doc 文档目录 中文文档
+let helptags=$VIM."/vimfiles/doc"
+set helplang=cn
 
 
-" 将 Tab 符号变成 空格
-set expandtab
+set list	"行尾、制表符等空白字符都会用特殊符号显示出来
+" set nolist	关闭显示空白字符
 
-" tab 字符所代表的空格数
-set tabstop=4
+" 设置tab和空格样式：Tab显示为|(竖线)，将行尾的空格显示为-(减号)
+set lcs=tab:\|\ ,nbsp:%,trail:-
 
-" softtabstop 会影响 <BS> 删除的空格数，但不是用 <SPACE> 插入的空格，而是 <TAB> 插入的空格。所以我们总是把 softtabstop 设定成和 tabstop 一样的数值，这样无论是用 <TAB> 插入缩进还是用 <BS> 删除缩进，其行为总是一样的。
+" 设定行首tab为灰色
+	highlight LeaderTab guifg=#666666
+" 匹配行首tab
+match LeaderTab /^\t/
 
-" 但是对于使用 <SPACE> 输入的空格，哪怕是连续输入的若干个空格，<BS> 还是会一个一个的删除。
+" Vundle ============================================
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set softtabstop=4
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" smarttab 要和后面的 shiftwidth 配合来用，它只作用于行首位置。当 smarttab 开启时，在行首键入 <TAB> 会填充 shiftwidth 设定的数值，在其他地方则填充 tabstop 设定的数值；当 smarttab 关闭时，无论在哪里键入 <TAB>，都会填充 tabstop 设定的数值。
-
-" 所以，如果开启 smarttab，然后 shiftwidth 和 tabstop 设定不一样的数值，比如一个是 8 一个是 4，那么在行首键入 <TAB> 会产生 8 个字符的空白，而在其他地方键入 <TAB> 则产生 4 个字符的空白。这常常用来控制 Continuation Indent 的行为，有时也叫做 Indentation for Wrapped Lines 或者 Wrapped Line Indentation。
-set smarttab
-
-set shiftwidth=2
-
-
-syntax enable
-set background=dark
-colorscheme solarized
-" ************** ������������� ************ "  
-  
-" vundle ��������  
-set nocompatible
-filetype off  
-set rtp+=~/.vim/bundle/Vundle.vim  
-call vundle#begin()  
-Plugin 'VundleVim/Vundle.vim'  
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'altercation/vim-colors-solarized'
-
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
-call vundle#end()  
-filetype on  
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='simple'
+call vundle#end()            " required
+filetype plugin indent on    " required
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" Put your non-Plugin stuff after this line
 
-" <leader>cc // 注释
-" <leader>cm 只用一组符号注释
-" <leader>cA 在行尾添加注释
-" <leader>c$ /* 注释 */
-" <leader>cs /* 块注释 */
-" <leader>cy 注释并复制
-" <leader>c<space> 注释/取消注释
-" <leader>ca 切换　// 和 /* */
-" <leader>cu 取消注释
- 
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = {
-            \ 'javascript': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
-            \ 'less': { 'left': '/**', 'right': '*/' }
-        \ }
+" ============================================Vundle
+
+"NERDTree快捷键=====================================
+
+nmap <F2> :NERDTree  <CR>	" 打开目录
+
+nnoremap <F2> :exe 'NERDTreeToggle' <CR>	" 打开和关闭目录，两种状态之间切换
+
+" 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!。
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+autocmd vimenter * NERDTree	" 启动 vim 时自动打开 NERDTree
+
+autocmd VimEnter * wincmd p	"打开新的 buffer时自动定位到编辑窗口
+
+let g:NERDTreeWinPos="left"
+let g:NERDTreeWinSize=25
+let g:NERDTreeShowLineNumbers=1
+let g:neocomplcache_enable_at_startup = 1
+let NERDTreeChDirMode=2  "选中root即设置为当前目录
+let NERDTreeQuitOnOpen=1 "打开文件时关闭树
+let NERDTreeShowBookmarks=1 "显示书签
+let NERDTreeMinimalUI=1 "不显示帮助面板
+let NERDTreeDirArrows=1 "目录箭头 1 显示箭头  0传统+-|号
+
+"=====================================NERDTree快捷键
+
+"colorscheme solarized	" 需手动安装
+colorscheme molokai	" 需手动安装
+
+
+" NERDTress File highlighting======================
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+" ======================NERDTress File highlighting
+
+" NERD Commenter===================================
+" <leader>cc   加注释
+" <leader>cu   解开注释
+
+" <leader>c<space>  加上/解开注释, 智能判断
+" <leader>cy   先复制, 再注解(p可以进行黏贴)
+" ===================================NERD Commenter
