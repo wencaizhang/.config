@@ -25,3 +25,28 @@ server {
   }
 }
 ```
+
+### 相关命令
+
++ 启动
+
+```bash
+/etc/init.d/nginx start
+```
+
++ 停止
+```bash
+/etc/init.d/nginx stop
+```
+
++ 重启
+```bash
+/etc/init.d/nginx restart
+```
+
++ 重新加载配置文件
+```bash
+/etc/init.d/nginx reload
+```
+
+
