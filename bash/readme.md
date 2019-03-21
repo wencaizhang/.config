@@ -32,12 +32,14 @@ source ~/.bashrc
 例如查看别名 `bk3` 可以使用 `alias`:
 
 ```bash
+# 显示定义别名的代码
 alias bk3
 ```
 
 或者使用 `type`
 
 ```bash
+# 语义化显示别名的含义
 type bk3
 ```
 
