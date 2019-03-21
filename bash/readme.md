@@ -45,3 +45,7 @@ type bk3
 
 ![查看某个别名的真实命令](http://xiaoshujiang.wencaizhang.com/xiaoshujiang/2019/view-the-true-command-via-alias-and-type.png)
 
+
+### 参考文章
+
++ [Linux 命令行工具使用小贴士及技巧（4）](http://blog.jobbole.com/110848/)
