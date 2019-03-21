@@ -2,6 +2,26 @@
 
 ### 设置别名 `alias`
 
+
+单独创建一个文件 `~/.bash_aliases` 用来定义别名，避免直接在` ~/.bashrc` 文件中添加。
+
+后在 `~/.bashrc` 文件中添加如下代码，使其加载 `~/.bash_aliases` 文件：
+
+
+```bash
+if [ -f ~/.bash_aliases ]; then
+      . ~/.bash_aliases
+fi
+```
+
+**修改之后需要重新加载 `.bashrc` 文件：
+
+```bash
+source ~/.bashrc
+```
+
+---
+
 编辑配置文件 `/etc/profile`，在文件中添加配置代码，例如：
 
 ```bash
