@@ -1,6 +1,6 @@
 
 
-### 设置别名 `alias`
+### 单独创建文件定义别名 alias
 
 
 单独创建一个文件 `~/.bash_aliases` 用来定义别名，避免直接在` ~/.bashrc` 文件中添加。
@@ -20,18 +20,24 @@ fi
 source ~/.bashrc
 ```
 
----
+### 使用命令将别名写入文件
 
-编辑配置文件 `/etc/profile`，在文件中添加配置代码，例如：
 
-```bash
-alias ll='ls -l'
-alias cp='cp -i'
-alias gs='git status'
-alias toroot='cd /www/html/'
+```
+"alias bk5='cd ../../../../..'" >> ~/.bash_aliases && source ~/.bash_aliases
 ```
 
-*注意：等号两侧不能有空格*
+### 查看某个别名的真实命令
 
+例如查看别名 `bk3` 可以使用 `alias`:
 
-美化 git bash 可参考文章：[在 Windows 上打造体验绝佳的 Linux 终端（非 wsl）](https://juejin.im/post/5bd5a08cf265da0add520772)
+```bash
+alias bk3
+```
+
+或者使用 `type`
+
+```bash
+type bk3
+```
+
