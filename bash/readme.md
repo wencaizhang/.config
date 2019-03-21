@@ -41,3 +41,5 @@ alias bk3
 type bk3
 ```
 
+![查看某个别名的真实命令](http://xiaoshujiang.wencaizhang.com/xiaoshujiang/2019/view-the-true-command-via-alias-and-type.png)
+
