@@ -7,6 +7,7 @@
 
 后在 `~/.bashrc` 文件中添加如下代码，使其加载 `~/.bash_aliases` 文件：
 
+注意如果你使用的是 zsh，那么需要在 `~/.zshrc` 文件中添加
 
 ```bash
 if [ -f ~/.bash_aliases ]; then
