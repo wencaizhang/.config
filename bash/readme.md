@@ -15,10 +15,16 @@ if [ -f ~/.bash_aliases ]; then
 fi
 ```
 
-**修改之后需要重新加载 `.bashrc` 文件：
+**修改之后需要重新加载 `.bashrc` 文件：**
 
 ```bash
 source ~/.bashrc
+```
+
+如果是使用 zsh 则应该加载 `~/.zshrc` 文件
+
+```bash
+source ~/.zsh.rc
 ```
 
 ### 使用命令将别名写入文件
