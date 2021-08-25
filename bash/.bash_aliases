@@ -38,7 +38,7 @@ alias l.='ls -d .*'
 
 # git 相关
 alias gs='git status'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cr eset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gpull='git pull'
 alias gpush='git push'
 alias ydev='yarn dev'
