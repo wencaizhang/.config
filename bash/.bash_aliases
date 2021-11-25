@@ -13,12 +13,13 @@ alias cd.down="cd ~/Download"
 alias ng="cd /www/server/panel/vhost/nginx"
 
 # 回退多级目录
-alias bk1="cd .."
-alias bk2="cd ../.."
-alias bk3="cd ../../.."
+alias bk1="cd .."  
+alias bk2="cd ../.."  
+alias bk3="cd ../../.."  
 alias bk4="cd ../../../.."
 alias bk5="cd ../../../../.."
 alias ..="cd .."
+alias 。。="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
@@ -26,9 +27,6 @@ alias ....="cd ../../.."
 # 清除屏幕
 alias cls="clear"
 alias c="clear"
-
-# tree
-alias tree="tree -I '*svn|*node_module*'"
 
 # ls 相关
 alias cls='clear'
@@ -38,10 +36,17 @@ alias l.='ls -d .*'
 
 # git 相关
 alias gs='git status'
+alias ga='git add'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gpull='git pull'
 alias gpush='git push'
-alias ydev='yarn dev'
+alias gopen="git open"
+alias gitconfig="git config user.name wencaizhang && git config user.email 1052642137@qq.com"
+
+# node
+alias ydev="yarn dev"
+alias ndev="npm run dev"
+alias hs="http-server"
 
 # 解压
 alias -s gz='tar -xzvf'
@@ -49,9 +54,18 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 
-# other
+# other for linux
 alias vi='vim'
+alias r='ranger'
 alias grep="grep --color=auto"
 alias tree="tree -I '*svn|*node_module*'"
 
-# custom
+
+# 命令行启动 APP for MacOS
+# vscode
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias qs='open -a QSpace'
+
+
+# alias ifconfig=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}')
