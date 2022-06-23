@@ -1,0 +1,128 @@
+###
+# *注意：等号两侧不能有空格*
+###
+
+# 代替键盘上难以触及的 ~ 键
+alias home="cd ~"
+
+alias cd.desk="cd ~/Desktop"
+alias cd.down="cd ~/Download"
+
+# 同样也可以为一些深层却很常用的目录设置别名
+# 如：宝塔面包的 nginx 配置目录
+alias ng="cd /www/server/panel/vhost/nginx"
+
+# 回退多级目录
+alias bk1="cd .."  
+alias bk2="cd ../.."  
+alias bk3="cd ../../.."  
+alias bk4="cd ../../../.."
+alias bk5="cd ../../../../.."
+alias ..="cd .."
+alias 。。="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+
+# 清除屏幕
+alias cls="clear"
+alias c="clear"
+
+# ls 相关
+alias cls='clear'
+alias la='ls -a'
+alias ll='ls -la'
+alias l.='ls -d .*'
+
+# git 相关
+alias gs='git status'
+alias ga='git add'
+alias log='git log'
+alias cz='git cz'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gpull='git pull'
+alias gpush='git push'
+alias gopen="git open"
+alias gitconfig="git config user.name wencaizhang && git config user.email 1052642137@qq.com"
+alias clone="git clone"
+alias clone1="git clone --depth=1 --single-branch"
+
+# node
+alias i="pnpm install"
+alias ni="npm install"
+alias pi="pnpm install"
+alias yi="yarn"
+
+alias d="npm run dev"
+alias s="npm run serve"
+alias b="npm run build"
+alias t="npm run test"
+
+alias build="npm run build"
+alias ydev="yarn dev"
+alias ndev="npm run dev"
+
+alias hs="http-server -o"
+
+# 解压
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+
+# other for linux
+alias vi='vim'
+alias r='ranger'
+alias grep="grep --color=auto"
+alias tree="tree -I '*svn|*node_module*'"
+
+# custom 
+
+
+# 命令行启动 APP for MacOS
+# vscode
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias qs='open -a QSpace'
+
+
+# alias ifconfig=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}')
+
+
+####################
+# 一些安装包的镜像地址
+####################
+
+# node
+# export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
+export ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/"
+
+# homebrew
+#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_NO_AUTO_UPDATE=true
+
+# flutter 镜像
+# 参考https://flutter.io/community/china 以获得有关镜像服务器的最新动态。
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+
+function proxy_on() {
+  export https_proxy=http://127.0.0.1:7890
+  export http_proxy=http://127.0.0.1:7890
+  export all_proxy=socks5://127.0.0.1:7890
+  echo -e "已开启代理"
+}
+
+function proxy_off(){
+  unset http_proxy
+  unset https_proxy
+  echo -e "已关闭代理"
+}
+
+function ip () {
+  /sbin/ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | tr -d "addr:"
+}
+
